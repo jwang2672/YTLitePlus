@@ -396,7 +396,7 @@ static const NSInteger YTLiteSection = 789;
             // Toggle for haptic feedback
             BASIC_SWITCH(LOC(@"PLAYER_GESTURES_HAPTIC_FEEDBACK"), nil, @"playerGesturesHapticFeedback_enabled"),
         ];        
-        YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"Player Gestures (Beta)") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
+        YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"PLAYER_GESTURES_TITLE") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
         [settingsViewController pushViewController:picker];
         return YES;
     }];
@@ -688,7 +688,8 @@ static const NSInteger YTLiteSection = 789;
             // Import mode: Handle the import of settings from a text file
             NSString *fileType = [pickedURL resourceValuesForKeys:@[NSURLTypeIdentifierKey] error:&error][NSURLTypeIdentifierKey];
 
-            if (UTTypeConformsTo((__bridge CFStringRef)fileType, kUTTypePlainText)) {
+            UTType *utType = [UTType typeWithIdentifier:fileType];
+            if ([utType conformsToType:UTTypePlainText]) {
                 NSString *fileContents = [NSString stringWithContentsOfURL:pickedURL encoding:NSUTF8StringEncoding error:nil];
                 NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
                 for (NSString *line in lines) {

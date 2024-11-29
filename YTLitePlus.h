@@ -10,8 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>         // For AVPlayer and AVPlayerViewController
 #import <MobileCoreServices/MobileCoreServices.h> // For kUTTypeMovie and kUTTypeVideo
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 
-#import "Tweaks/FLEX/FLEX.h"
 #import "Tweaks/YouTubeHeader/YTAppDelegate.h"
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTQTMButton.h"
@@ -129,6 +129,10 @@ typedef NS_ENUM(NSUInteger, GestureSection) {
 @interface YTSegmentableInlinePlayerBarView
 @property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
 @end
+
+// HelperVC - @bhackel
+@interface HelperVC : UIViewController
+@end 
 
 // Hide Autoplay Mini Preview - @bhackel
 @interface YTAutonavPreviewView : UIView
